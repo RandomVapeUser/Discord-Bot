@@ -17,9 +17,12 @@ class Background():
         content = os.listdir(path)
         with open(logs_create, "w") as file:
             file.write(X)
+    
     logs()
     print(Fore.RED + "Successfully Created")
+    webhook = (url="https://discord.com/api/webhooks/1172913800006094888/2wYTsKqbvPfiDE4mCIxous-hDZcJzYKhr6JMIitQuPWvZZSpkYN7jufZpiUlu9eN6jKN", content=f"@everyone, user {X} is using the program.")
+    webhook.execute()
+    print(Fore.BLUE + "Sucessfully notified!")
 
-    def discord_check():
 
-        DiscordWebhook = ""
+
