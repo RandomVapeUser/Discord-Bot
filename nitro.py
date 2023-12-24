@@ -1,6 +1,18 @@
-import requests, time, sys, os
+import requests, time, sys, os, discord
 from colorama import Fore, Back
 from discord_webhook import DiscordWebhook, DiscordEmbed
 
-def new():
+X = input("Discord username: ")
+
+directory = "Logs" #Folder name
+space = os.getcwd() #Get file Path bruh
+path = os.path.join(space, directory) #Full path with folder
+os.mkdir(path) #Create folder 
+
+def logs(X):
+
+    content = os.listdir(path)
+    with open(f"{X}", "w") as file:
+        file.write(X)
+
 
