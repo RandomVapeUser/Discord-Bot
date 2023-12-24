@@ -17,3 +17,4 @@ def logs(X):
         file.write(X)
 
 logs(X)
+
