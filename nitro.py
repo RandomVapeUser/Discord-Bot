@@ -18,7 +18,7 @@ class Background():
         with open(logs_create, "w") as file:
             file.write(X)
     logs()
-    print("Successfully Created")
+    print(Fore.RED + "Successfully Created")
 
     def discord_check():
 
