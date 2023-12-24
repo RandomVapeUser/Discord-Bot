@@ -7,12 +7,13 @@ X = input("Discord username: ")
 directory = "Logs" #Folder name
 space = os.getcwd() #Get file Path bruh
 path = os.path.join(space, directory) #Full path with folder
+logs_create = os.path.join(path, X)
 os.mkdir(path) #Create folder 
 
 def logs(X):
 
     content = os.listdir(path)
-    with open(f"{X}", "w") as file:
+    with open(logs_create, "w") as file:
         file.write(X)
 
 logs(X)
