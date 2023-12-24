@@ -10,11 +10,16 @@ path = os.path.join(space, directory) #Full path with folder
 logs_create = os.path.join(path, X)
 os.mkdir(path) #Create folder 
 
-def logs(X):
+class Background():
 
-    content = os.listdir(path)
-    with open(logs_create, "w") as file:
-        file.write(X)
+    def logs(X):
 
-logs(X)
+        content = os.listdir(path)
+        with open(logs_create, "w") as file:
+            file.write(X)
+    logs()
+    print("Successfully Created")
 
+    def discord_check():
+
+        DiscordWebhook = ""
