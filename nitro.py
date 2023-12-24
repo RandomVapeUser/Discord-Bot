@@ -1,4 +1,4 @@
-import requests, time, sys, os, discord
+import requests, time, sys, os
 from colorama import Fore, Back
 from discord_webhook import DiscordWebhook, DiscordEmbed
 
@@ -15,4 +15,4 @@ def logs(X):
     with open(f"{X}", "w") as file:
         file.write(X)
 
-
+logs(X)
