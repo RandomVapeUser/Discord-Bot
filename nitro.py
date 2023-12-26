@@ -1,28 +1,44 @@
-import requests, time, sys, os
-from colorama import Fore, Back
-from discord_webhook import DiscordWebhook, DiscordEmbed
+import requests, time, sys, os, discord
+from colorama import Fore
 
 X = input("Discord username: ")
+Y = int(input("Discord channel ID: "))  # Convert channel ID to int
 
-directory = "Logs" #Folder name
-space = os.getcwd() #Get file Path bruh
-path = os.path.join(space, directory) #Full path with folder
-logs_create = os.path.join(path, X)
-os.mkdir(path) #Create folder 
+# Variables
+intents = discord.Intents.default()
+intents.messages = True
+client = discord.Client(intents=intents)
+directory = "Logs"
+space = os.getcwd()
+path = os.path.join(space, directory)
+logs_create = os.path.join(path, f"{X}.txt")
+messages = []
 
-class Background():
-
-    def logs():
-
-        content = os.listdir(path)
-        with open(logs_create, "w") as file:
-            file.write()
-    
-    logs()
-    print(Fore.RED + "Successfully Created")
-    webhook = DiscordWebhook(url="https://discord.com/api/webhooks/1172913800006094888/2wYTsKqbvPfiDE4mCIxous-hDZcJzYKhr6JMIitQuPWvZZSpkYN7jufZpiUlu9eN6jKN", content=f"@everyone, user {X} is using the program.")
-    webhook.execute()
-    print(Fore.BLUE + "Sucessfully notified!")
+# Creation process
+print(Fore.RED + "Successfully Created")
+print(Fore.BLUE + "Redirecting to the chat.....")
+time.sleep(3)
 
 
+@client.event
+async def on_ready():
+    channel = client.get_channel(Y)
+    await channel.send(f"User {X} has connected!")
 
+
+@client.event
+async def on_message(message):
+    await client.process_commands(message)
+
+    msg = message.content
+
+    if msg != "":
+        messages.append(msg)
+
+
+async def message_send(message):
+    channel = client.get_channel(Y)
+    await channel.send(message)
+
+
+client.run("Bot Token")
