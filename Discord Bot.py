@@ -41,4 +41,4 @@ async def message_send(message):
     await channel.send(message)
 
 
-client.run("MTE4OTE4NjI4NjgyNTc4MzQyNw.G9RmQW.4jxZJFi2hazRKPK3UHGL3pFaj_bDy3ZjVtr5CU")
+client.run("your bot token here :D")
