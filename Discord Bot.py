@@ -1,8 +1,8 @@
-import requests, time, sys, os, discord
+import discord, time, sys, os
 from colorama import Fore
 
 X = input("Discord username: ")
-Y = int(input("Discord channel ID: "))  # Convert channel ID to int
+Y = int(input("Discord channel ID: "))  #
 
 # Variables
 intents = discord.Intents.default()
@@ -23,22 +23,34 @@ time.sleep(3)
 @client.event
 async def on_ready():
     channel = client.get_channel(Y)
-    await channel.send(f"User {X} has connected!")
+    await channel.send(f"@everyone, User {X} has connected!")
 
 
 @client.event
 async def on_message(message):
-    await client.process_commands(message)
 
     msg = message.content
 
-    if msg != "":
+    if msg != "" and message.author != client.user:
         messages.append(msg)
+        print(msg)
 
+@client.event
+async def on_ready():
+    
+    global X
 
-async def message_send(message):
-    channel = client.get_channel(Y)
-    await channel.send(message)
+    while True:
+        
+        O = input("You: ")
 
+        if O != "69":
+            channel = client.get_channel(Y)
+            await channel.send(f"User {X} says {O}")
+            continue
+        elif O == "69":
+            print("Exiting....")
+            time.sleep(4)
+            sys.exit()
 
-client.run("your bot token here :D")
+client.run("Your Bot token here :D")
